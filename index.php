@@ -1,6 +1,7 @@
 <?php
     include 'function.php';
 
+    
     if(isset($_POST["btn-submit"])){
         $name = $_POST["name"];
         $noHp = $_POST["noHp"];
@@ -12,6 +13,8 @@
             echo "Data gagal ditambahkan";
         }
     }
+    $data = showData();
+    // var_dump($data);
 
 ?>
 
@@ -20,7 +23,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact aplikasi</title>
+    <title>Contact App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
   <body>
@@ -28,17 +31,19 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col" >ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone Number</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Akmal</td>
-                    <td>1234</td>
-                </tr>
+                <?php foreach($data as $row): ?>
+                    <tr>
+                        <td><?php echo $row['ID'] ?></td>
+                        <td><?php echo $row['Name'] ?></td>
+                        <td><?php echo $row['PhoneNumber'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
         <form method="POST">

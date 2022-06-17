@@ -45,16 +45,23 @@
     //     echo "Error <br>";
     // }
 
-    // // Menampilkan data
-    // $sql = "SELECT * FROM user";
-    // $result = $conn->query($sql);
-    // if ($result->num_rows > 0) {
-    //     // output data of each row
-    //     while($row = $result->fetch_assoc()) {
-    //         echo "id: " . $row["ID"]. " - Name: " . $row["Name"]. " " . $row["PhoneNumber"]. "<br>";
-    //     }
-    // } else {
-    //     echo "0 results";
-    // }
+    // Menampilkan data
+    function showData(){
+        global $conn;
+        $sql = "SELECT * FROM user";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                // echo "id: " . $row["ID"]. " - Name: " . $row["Name"]. " " . $row["PhoneNumber"]. "<br>"; 
+                $data[] = $row; 
+            }
+
+            return $data;
+        } else {
+            return false;
+        }
+    }
+    
     
 ?>
