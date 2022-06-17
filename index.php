@@ -34,6 +34,8 @@
                     <th scope="col" >ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone Number</th>
+                    <th scope="col">Aksi</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +44,10 @@
                         <td><?php echo $row['ID'] ?></td>
                         <td><?php echo $row['Name'] ?></td>
                         <td><?php echo $row['PhoneNumber'] ?></td>
+                        <td>
+                            <a href="edit.php?id=<?php echo $row['ID'] ?>" class="btn btn-primary" >Edit</a>
+                            <a onclick="return confirm('data ingin di hapus?');" href="delete.php?id=<?php echo $row['ID'] ?>" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

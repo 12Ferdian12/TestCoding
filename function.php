@@ -37,13 +37,16 @@
     //     echo "Error <br>";
     // }
 
-    // // Menghapus data
-    // $sql = "DELETE FROM user Where PhoneNumber = '0123456789'";
-    // if ($conn->query($sql) === TRUE) {
-    //     echo "New record created successfully <br>";
-    // } else {
-    //     echo "Error <br>";
-    // }
+    // Menghapus data
+    function deleteData($id){
+        global $conn;
+        $sql = "DELETE FROM user Where ID = '$id'";
+        if ($conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // Menampilkan data
     function showData(){
