@@ -27,15 +27,26 @@
         }
     }
     
-    // // Mengedit data
-    // $sql = "UPDATE user
-    // Set Name = 'akmal'
-    // Where ID = 1";
-    // if ($conn->query($sql) === TRUE) {
-    //     echo "New record created successfully <br>";
-    // } else {
-    //     echo "Error <br>";
-    // }
+    // Mengedit data
+    function updateData($name, $noHp, $id){
+        global $conn;
+        $sql = "UPDATE user Set Name = '$name', PhoneNumber = '$noHp' Where ID = $id";
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully <br>";
+            return true;
+        } else {
+            echo "Error <br>";
+            return false;
+        }
+    }
+    
+    function findData($id){
+        global $conn;
+        $sql = "SELECT * FROM user Where ID = '$id'";
+        $result = $conn->query($sql);
+
+        return $result->fetch_assoc();
+    }
 
     // Menghapus data
     function deleteData($id){

@@ -61,7 +61,7 @@
                     :
                 </div>
                 <div class="col-2" >
-                    <input type="text" name="name" id="">
+                    <input type="text" name="name" id="" onkeypress="return onlyAlphabetKey(event)" maxlength="10">
                 </div>
             </div>
             <div class="row mt-3">
@@ -72,7 +72,7 @@
                     :
                 </div>
                 <div class="col-2" >
-                    <input type="text" name="noHp">
+                    <input type="text" name="noHp" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" onkeypress="return onlyNumberKey(event)">
                 </div>
             </div>
             <div class="row mt-5">
@@ -85,4 +85,22 @@
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
+  <script>
+    function onlyNumberKey(evt) {
+          
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
+    function onlyAlphabetKey(evt) {
+          
+          // Only ASCII character in that range allowed
+          var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+          if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+              return true;
+          return false;
+      }
+</script>
 </html>

@@ -7,12 +7,12 @@
         $result = deleteData($id);
         if ($result) {
             echo ' <script>
-            alert("data berhasil di dihapus");
+            alert("data berhasil dihapus");
             document.location.href="index.php";
             </script>';
         } else {
             echo ' <script>
-            alert("data berhasil di dihapus");
+            alert("data tidak berhasil dihapus");
             document.location.href="index.php";
             </script>';
         }
