@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "contact";
+    $dbname = "kasir";
 
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,6 +12,17 @@
         die("Connection failed: " . $conn->connect_error);
     }
     // echo "Connected successfully <br>";
+
+        // login
+        function login($email, $password) {
+            global $conn;
+            $newPassword = md5($password);
+            $sql = "SELECT * FROM user Where 
+            email = '$email' AND password = '$newPassword'";
+            $result = $conn->query($sql);
+            
+            return $result->fetch_assoc();
+        }
 
     // Menambahkan data
     function insertData($name, $noHp) {
