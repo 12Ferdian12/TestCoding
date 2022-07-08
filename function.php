@@ -24,6 +24,19 @@
             return $result->fetch_assoc();
         }
 
+    // register
+    function register($name, $email, $password, $role) {
+        global $conn;
+        $password = md5($password);
+        $sql = "INSERT INTO user(ID, Nama, Email, Password, Role) 
+        VALUES (NULL, '$name', '$email', '$password', '$role')";
+        if ($conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Menambahkan data
     function insertData($name, $noHp) {
         global $conn;
