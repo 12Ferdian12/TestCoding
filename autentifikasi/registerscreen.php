@@ -10,6 +10,7 @@ if(isset($_POST["btn-submit"])){
     $result = register($name, $email, $password, $role);
     if ($result) {
         echo ' <script>
+        document.location.href="../index.php";
         alert("Anda berhasil register");
         
         </script>';

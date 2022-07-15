@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -20,6 +21,8 @@
             $sql = "SELECT * FROM user Where 
             email = '$email' AND password = '$newPassword'";
             $result = $conn->query($sql);
+
+            $_SESSION['user'] = $result->fetch_assoc();
             
             return $result->fetch_assoc();
         }
@@ -31,6 +34,9 @@
         $sql = "INSERT INTO user(ID, Nama, Email, Password, Role) 
         VALUES (NULL, '$name', '$email', '$password', '$role')";
         if ($conn->query($sql) === TRUE) {
+            $last_id = $conn->insert_id;
+            $data = findDataId($last_id);
+            $_SESSION['user'] = $data;
             return true;
         } else {
             return false;
@@ -64,7 +70,7 @@
         }
     }
     
-    function findData($id){
+    function findDataId($id){
         global $conn;
         $sql = "SELECT * FROM user Where ID = '$id'";
         $result = $conn->query($sql);
