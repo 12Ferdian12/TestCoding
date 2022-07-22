@@ -79,7 +79,7 @@
     }
 
     // Menghapus data
-    function deleteData($id){
+    function deleteDataUser($id){
         global $conn;
         $sql = "DELETE FROM user Where ID = '$id'";
         if ($conn->query($sql) === TRUE) {
@@ -90,7 +90,7 @@
     }
 
     // Menampilkan data
-    function showData(){
+    function showDataUser(){
         global $conn;
         $sql = "SELECT * FROM user";
         $result = $conn->query($sql);
